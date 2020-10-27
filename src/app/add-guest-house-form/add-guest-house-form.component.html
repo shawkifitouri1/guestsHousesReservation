@@ -1,0 +1,27 @@
+
+    <form nz-form [nzAutoTips]="autoTips" [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm.value)">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>name</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzValidatingTip="Validating...">
+          <input nz-input formControlName="name" placeholder="async validate try to write JasonWood" [(ngModel)]="modefiedGuestHouse.name " />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>description</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input formControlName="description" placeholder="description" [(ngModel)]="modefiedGuestHouse.description" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>location</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input formControlName="location" placeholder="location" [(ngModel)]="modefiedGuestHouse.location" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+          <button nz-button nzType="primary">Submit</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>

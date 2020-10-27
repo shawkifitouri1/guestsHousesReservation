@@ -1,0 +1,83 @@
+
+    <h3 nz-typography>Guests Houses Managment</h3>
+
+      <nz-divider></nz-divider>
+<button nz-button class="primary"  (click)="showModal()">Add Guests House</button>
+
+    <nz-table #basicTable [nzData]="guestLousesList">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>description</th>
+          <th>location</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let guestHouse of guestLousesList">
+          <td>{{ guestHouse.name }}</td>
+          <td>{{ guestHouse.description }}</td>
+          <td>{{ guestHouse.location }}</td>
+          <td>
+            <button type="button" class="btn btn-outline-danger"  nz-popconfirm nzPopconfirmTitle="Are you sure delete this task?" nzPopconfirmPlacement="bottom"
+            (nzOnConfirm)="confirm(guestHouse)" (nzOnCancel)="cancel()">Delete</button>
+            <nz-divider nzType="vertical"></nz-divider>
+
+            <!-- <button nz-button nzType="primary">Primary Button</button> -->
+            <button type="button" class="btn btn-outline-warning" (click)="showModeficationModal(guestHouse)">Modify</button>
+
+
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-------------------------------------------------------------- -->
+
+
+
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" (nzOnCancel)="handleCancel()" (nzOnOk)="submitForm(validateForm.value)">
+    <form nz-form [nzAutoTips]="autoTips" [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm.value)">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>name</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzValidatingTip="Validating...">
+          <input nz-input formControlName="name" placeholder="async validate try to write JasonWood" [ngModel]="name " />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>description</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input formControlName="description" placeholder="description" [(ngModel)]="description" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>location</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+          <input nz-input formControlName="location" placeholder="location" [(ngModel)]="location" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>location</nz-form-label>
+        <nz-form-control [nzSpan]="12">
+
+        <!-- <app-upload-images></app-upload-images> -->
+      <app-upload-images *ngIf="this.modefying " [ModifyingFileList]="this.modefiedGuestHouse.imagesList" [isModifiyng]="this.modefying" ></app-upload-images>
+    </nz-form-control>
+  </nz-form-item>
+
+      <!-- <app-badara></app-badara> -->
+    </form>
+</nz-modal>
